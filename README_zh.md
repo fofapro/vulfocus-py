@@ -8,12 +8,12 @@
 
 ## Vulfocus API
 
-基于 [`Vulfocus API`](https://fofapro.github.io/vulfocus/#/VULFOCUSAPI) 编写的 `Python` 版 `SDK`，方便`Python`开发者快速将  [`Vulfocus`](http://vulfocus.io/) 集成到自己的项目中。
+[`Vulfocus API`](https://fofapro.github.io/vulfocus/#/VULFOCUSAPI) 是  [`Vulfocus`](http://vulfocus.io/) 为开发提供的 `RESUFul API`接口，允许开发者在自己的项目中集成 [`Vulfocus`](http://vulfocus.io)。
 
 
 ## Vulfocus SDK
 
-基于 [`Vulfocus API`](https://fofapro.github.io/vulfocus/#/VULFOCUSAPI) 编写的 `Python 版 `SDK`，方便`Python`开发者快速将[Vulfocus](http://vulfocus.io/) 集成到自己的项目中。
+基于 [`Vulfocus API`](https://fofapro.github.io/vulfocus/#/VULFOCUSAPI) 编写的 `Python 版 `SDK`，方便`Python开发者快速将[Vulfocus](http://vulfocus.io/) 集成到自己的项目中。
 
 
 ## 安装
