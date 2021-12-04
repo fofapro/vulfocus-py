@@ -10,8 +10,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="VulfocusSdk",
-    version="0.0.1",
+    name="vulfocus",
+    version="0.0.2",
     author="x98zy",
     author_email="xu1580987871@163.com",
     description="The Api for vulfocus",

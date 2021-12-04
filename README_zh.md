@@ -18,7 +18,7 @@
 
 ## 安装
 
-pip install VulfocusSdk
+pip install vulfocus
 
 使用
 
@@ -32,7 +32,7 @@ pip install VulfocusSdk
 #### Code
 
 ```python
-from vulfocus_client_api.vulfocusClient import VulfocusClient
+from vulfocus.vulfocusClient import VulfocusClient
 clinet = VulfocusClient(username="xxxx",licence="xxxxxx")
 images = clinet.get_images()
 print(images)
@@ -41,7 +41,7 @@ print(images)
 #### Response
 
 ```python
-[<vulfocus_client_api.imageEntity.ImageEntity object at 0x000002978B35DC48>, <vulfocus_client_api.imageEntity.ImageEntity object at 0x000002978B35DD08>, <vulfocus_client_api.imageEntity.ImageEntity object at 0x000002978B35DAC8>]
+ImageEntity(image_name='vulfocus/webmin-cve_2020_35606:latest', image_vul_name='Webmin 命令执行漏洞 （CVE-2020-35606）', image_desc='Webmin是Webmin社区的一套基于Web的用于类Unix操作系统中的系统管理工具。\nWebmin 1.962版本及之前版本存在安全漏洞，该漏洞允许执行任意命令。任何被授权使用Package Updates模块的用户都可以使用根权限通过包含和的向量执行任意命令。\n账户密码：root:password')
 ```
 
 ### 启动
@@ -49,16 +49,16 @@ print(images)
 #### Code
 
 ```python
-from vulfocus_client_api.vulfocusClient import VulfocusClient
-clinet = VulfocusClient(username="xxxxx",licence="xxxxxxx")
+from vulfocus.vulfocusClient import VulfocusClient
+clinet = VulfocusClient(username="xxxx",licence="xxxxx")
 images = clinet.get_images()
-print(clinet.start_container(images[0].get_image_name()))
+print(clinet.start_container(images[0].image_name))
 ```
 
 #### Response
 
 ```python
-HostEntity(host=118.193.36.37:57581,port={'10000': '57581'})
+HostEntity(host=x.x.x.x:57581,port={'10000': '57581'})
 ```
 
 ### 停止
@@ -66,10 +66,10 @@ HostEntity(host=118.193.36.37:57581,port={'10000': '57581'})
 #### Code
 
 ```python
-from vulfocus_client_api.vulfocusClient import VulfocusClient
-clinet = VulfocusClient(username="xxx",licence="xxxxx")
+from vulfocus.vulfocusClient import VulfocusClient
+clinet = VulfocusClient(username="xxxx",licence="xxxxx")
 images = clinet.get_images()
-print(clinet.stop_container(images[0].get_image_name()))
+print(clinet.stop_container(images[0].image_name))
 ```
 
 #### Response
@@ -83,10 +83,10 @@ print(clinet.stop_container(images[0].get_image_name()))
 #### Code
 
 ```python
-from vulfocus_client_api.vulfocusClient import VulfocusClient
-clinet = VulfocusClient(username="xxx",licence="xxxxx")
+from vulfocus.vulfocusClient import VulfocusClient
+clinet = VulfocusClient(username="xxxx",licence="xxxxx")
 images = clinet.get_images()
-print(clinet.delete_container(images[0].get_image_name()))
+print(clinet.delete_container(images[0].image_name))
 ```
 
 #### Response
@@ -97,7 +97,7 @@ print(clinet.delete_container(images[0].get_image_name()))
 
 ## 更新日志
 
-2021-11-28
+2021-11-29
 
 ```
 Release

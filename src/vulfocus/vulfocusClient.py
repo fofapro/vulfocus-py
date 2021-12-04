@@ -6,10 +6,14 @@
 
 import requests
 import json
-from vulfocus_client_api.vulfocusException import VulfocusException
-from vulfocus_client_api.operationConstants import OperationConstants
-from vulfocus_client_api.imageEntity import ImageEntity
-from vulfocus_client_api.hostEntity import HostEntity
+from vulfocus.vulfocusException import VulfocusException
+from vulfocus.operationConstants import OperationConstants
+from collections import namedtuple
+
+
+ImageEntity = namedtuple("ImageEntity", ["image_name", "image_vul_name", "image_desc"])
+HostEntity = namedtuple("HostEntity", ["host", "port"])
+
 
 class VulfocusClient(object):
     def __init__(self, username, licence):
@@ -28,13 +32,15 @@ class VulfocusClient(object):
         ret_image_list = response_info["data"]
         if ret_image_list:
             for image in ret_image_list:
-                image_instance = ImageEntity()
+                image_name, image_vul_name, image_desc = "", "", ""
                 if "image_name" in image:
-                    image_instance.set_image_name(image["image_name"])
+                    image_name = image["image_name"]
                 if "image_vul_name" in image:
-                    image_instance.set_image_vul_name(image["image_vul_name"])
+                    image_vul_name = image["image_vul_name"]
                 if "image_desc" in image:
-                    image_instance.set_image_desc(image["image_desc"])
+                    image_desc = image["image_desc"]
+                image_instance = ImageEntity(image_name=image_name, image_vul_name=image_vul_name,
+                                             image_desc=image_desc)
                 image_list.append(image_instance)
         return image_list
 
@@ -48,9 +54,9 @@ class VulfocusClient(object):
         ret_info = requests.post(url=url, data=data)
         response_info = json.loads(ret_info.text)
         self.check_response_msg(response_info)
-        hostentity = HostEntity()
-        hostentity.set_host(response_info["data"]["host"])
-        hostentity.set_port(json.loads(response_info["data"]["port"]))
+        host = response_info["data"]["host"]
+        port = json.loads(response_info["data"]["port"])
+        hostentity = HostEntity(host=host, port=port)
         return hostentity
 
 
@@ -79,5 +85,4 @@ class VulfocusClient(object):
     def check_response_msg(self, response_info):
         if "status" in response_info and response_info["status"] == 500:
             raise VulfocusException(response_info["msg"])
-
 
